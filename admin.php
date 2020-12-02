@@ -49,27 +49,27 @@
             if ($_SESSION['user']['valid'] == 'true' && ($_SESSION['user']['role'] == 'admin' || $_SESSION['user']['role'] == 'editor')){
 
               echo "<h2 style='margin-left:25px;'>Admin ili Editor</h2>";
-              print'<div class="card card-outline-secondary" style="margin:20px; width:90%">
-                    <div class="card-header">
-                      <h3 class="mb-0">Dodaj novi članak</h3>
+              print'<div style="margin:20px; width:90%">
+                    <div >
+                      <h3 >Dodaj novi članak</h3>
                     </div>
-                    <div class="card-body">
-                      <form action="dodaniclanak.php" method="POST" enctype="multipart/form-data" class="form" role="form">
-                        <div class="form-group">
+                    <div >
+                      <form action="dodaniclanak.php" method="POST" class="form" role="form">
+                        <div >
                           <label for="naslov">Naziv članka</label> 
-                          <input class="form-control" name="naslov" id="naslov" placeholder="Naziv članka" type="text">
+                          <input class="form-control" name="naslov" id="naslov"  type="text">
                         </div>
-                        <div class="form-group">
+                        <div >
                           <label for="kratkiOpis">Kratki opis - 100 znakova</label> 
-                          <input class="form-control" name="kratkiOpis" id="kratkiOpis" placeholder="Kratki opis članka" type="text">
+                          <input class="form-control" name="kratkiOpis" id="kratkiOpis"  type="text">
                         </div>
-                        <div class="form-group">
+                        <div >
                               <label for="tekst">Sadržaj članka</label>
                               <textarea class="form-control" id="tekst" name="tekst" rows="6"></textarea>
                         </div>
                         
                         <input type="file" name="file" id="file">
-                        <div class="form-group">
+                        <div >
                           <button class="btn btn-success btn-lg float-right" type="submit">Pošalji</button>
                         </div>
                       </form>

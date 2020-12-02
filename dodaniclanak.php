@@ -73,16 +73,15 @@ if ($_SESSION['user']['valid'] == 'true') {
                 $fileExtension = strtolower(end($fileNameCmps));
                 //rename
                 $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
-                // directory in which the uploaded file will be moved
-                $uploadFileDir = 'uploads/';
-                $dest_path = $uploadFileDir . $newFileName;
+                $FileDir = 'slike/';
+                $dest_path = $FileDir . $newFileName;
 
                 if (move_uploaded_file($fileTmpPath, $dest_path) && ($fileExtension == "jpg" || $fileExtension == "png" || $fileExtension == "jpeg" || $fileExtension == "webp")) {
 
                     $sql = "insert into vijest (naslov,slikaPath,vrijemeObjave,tekst,kratkiOpis) values ('$naslov','$dest_path','$vrijemeObjave','$tekst','$kratkiOpis')";
                     mysqli_query($conn, $sql) or die(mysqli_error($conn));
                 } else {
-                    echo "Članak nije poslan! Greška!";
+                    echo "Nije spremljeno";
                 }
             } else {
                 echo "Unesite sve polja";
