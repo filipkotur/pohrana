@@ -73,7 +73,7 @@ if ($_SESSION['user']['valid'] == 'true') {
                 $fileExtension = strtolower(end($fileNameCmps));
                 //rename
                 $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
-                $FileDir = 'slike/';
+                $FileDir = 'uploads/';
                 $dest_path = $FileDir . $newFileName;
 
                 if (move_uploaded_file($fileTmpPath, $dest_path) && ($fileExtension == "jpg" || $fileExtension == "png" || $fileExtension == "jpeg" || $fileExtension == "webp")) {
