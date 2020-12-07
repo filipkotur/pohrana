@@ -15,7 +15,7 @@
 			  <li><a href="index.php">Početna</a></li>
 			  <li><a href="news.php">News</a></li>
 			  <li><a href="contact.php">Contact</a></li>
-			  <li><a href="about-us.html">About</a></li>
+			  <li><a href="about-us.php">About</a></li>
 			  <li><a href="gallery.php">Gallery</a></li>
 			  <li><a href="login.php">Prijava</a></li>
 			  <li><a href="registracija.php">Registracija</a></li>

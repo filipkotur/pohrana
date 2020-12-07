@@ -24,10 +24,10 @@ if(!isset($_POST['_action_']))  { $_POST['_action_'] = FALSE;  }
 			  <li><a href="index.php">Početna</a></li>
 			  <li><a href="news.php">News</a></li>
 			  <li><a href="contact.php">Contact</a></li>
-			  <li><a href="about-us.html">About</a></li>
+			  <li><a href="about-us.php">About</a></li>
 			  <li><a href="gallery.php">Gallery</a></li>
 			  <li><a href="login.php">Prijava</a></li>
-			  <li><a href="registration.php">Registracija</a></li>
+			  <li><a href="registracija.php">Registracija</a></li>
 			  <?php
 
             # Stop Hacking attempt
@@ -35,7 +35,7 @@ if(!isset($_POST['_action_']))  { $_POST['_action_'] = FALSE;  }
             # Database connection
 
 
-			if (isset($_SESSION['username'])){
+			if ($_POST['_action_'] == TRUE){
 
                 print'<li class="nav-item">
                   <a class="nav-link" href="odjava.php">Odjava</a>
@@ -63,7 +63,7 @@ if(!isset($_POST['_action_']))  { $_POST['_action_'] = FALSE;  }
             </tr></td>
 
             <tr><td>
-				<input type="submit" value="Submit"></tr></td>
+			<button class="btn btn-success btn-lg float-right" type="submit">Prijavi se</button></td></tr>
 			</form>';
 		} else if ($_POST['_action_'] == TRUE)  {
 			$query  = "SELECT * FROM korisnik WHERE username='" .  $_POST['username'] . "'";

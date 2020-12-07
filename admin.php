@@ -1,3 +1,10 @@
+<?php
+define('__APP__', TRUE);
+session_start();
+
+include ("dbconn.php");
+if(!isset($_POST['_action_']))  { $_POST['_action_'] = FALSE;  }
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -15,22 +22,14 @@
 			  <li><a href="index.php">Početna</a></li>
 			  <li><a href="news.php">News</a></li>
 			  <li><a href="contact.php">Contact</a></li>
-			  <li><a href="about-us.html">About</a></li>
+			  <li><a href="about-us.php">About</a></li>
 			  <li><a href="gallery.php">Gallery</a></li>
 			  <li><a href="login.php">Prijava</a></li>
 			  <li><a href="registration.php">Registracija</a></li>
         <li><a href="admin.php">Admin</a></li>
 
-			  
+
 			  <?php
-
-            # Stop Hacking attempt
-            define('__APP__', TRUE);
-
-            # Database connection
-            include("dbconn.php");
-
-            session_start();
 
               if (isset($_SESSION['username'])){
 
@@ -44,9 +43,10 @@
 	</header>
 	<main>
 		<h1>Internet history</h1>
-		<?php
-        
-            if ($_SESSION['user']['valid'] == 'true' && ($_SESSION['user']['role'] == 'admin' || $_SESSION['user']['role'] == 'editor')){
+    <?php
+   
+    
+     if ($_SESSION['user']['valid'] == 'true' && ($_SESSION['user']['role'] == 'admin' || $_SESSION['user']['role'] == 'editor')){
 
               echo "<h2 style='margin-left:25px;'>Admin ili Editor</h2>";
               print'<div style="margin:20px; width:90%">
@@ -75,14 +75,29 @@
                       </form>
                     </div>
                   </div>';
+                  $query  = "SELECT * FROM korisnik ";
+                  $result = @mysqli_query($conn, $query);
+
+                  echo '<table   style="border: 1px solid black">';
+while($row = @mysqli_fetch_array($result, MYSQLI_ASSOC)
+){
+  echo '<tr>
+        <td><font size="4" face="Lucida Sans Unicode" >' .$row['username'].'</td>
+        <td><font size="4" face="Lucida Sans Unicode" >' .$row['role'].'</td>
+
+        </tr>';
+}
+echo '</table>';
+              print '<form name="my_form" method="post" action="delete_user.php">
+              User Name: <input type="text" name="username_delete" placeholder="username"><br />
+              <input type="submit" name="btn_delete" value="Delete User" />
+          </form>'   ; 
 
             }
             else if($_SESSION['user']['valid'] == 'true'){
               echo "<h2>Normalan korisnik - pristup zabranjen</h2>";
             }
-            else{
-              echo "<h2 >Niste registrirani</h2>";
-            }
+            else{echo "<h2 >Niste registrirani</h2>";}
 
 
         ?>
